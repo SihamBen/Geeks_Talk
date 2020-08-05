@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Geek Talk</title>
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class='section-1'>
+       <div class="text">
+          <h2>Join a room and talk to people with the same interests as you.</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reprehenderit, iste fugiat accusamus dicta blanditiis harum? 
+            , animi ad sunt aspernatur fuga laborum sapiente!
+          </p>
+        </div>
+        <div class='illustration'>
+        <img alt="" src="conference_call.svg" />
+      </div>
+    </div>
+      <div class="rooms">
+      <div class="room ">
+        <img src="security.svg">
+        <h2>Security</h2>
+        <button onclick="joinRoom(this)" id="security">Join Room</button>
+      </div>
+      <div class="room ">
+        <img src="frontend.svg" alt="">
+        <h2>Front end</h2>
+        <button onclick="joinRoom(this)" id="frontEnd">Join Room</button>
+      </div>
+      <div class="room ">
+        <img src="backend.svg" alt="">
+        <h2>Back end</h2>
+        <button onclick="joinRoom(this)" id="backEnd">Join Room</button>
+      </div>
+      <div class="room ">
+        <img src="AI.svg" alt="">
+        <h2>AI</h2>
+        <button onclick="joinRoom(this)" id="AI">Join Room</button>
+      </div>
+      <div class="room ">
+        <img src="cloud.svg" alt="">
+        <h2>Cloud</h2>
+        <button onclick="joinRoom(this)" id="cloud">Join Room</button>
+      </div>
+      <div class="room">
+        <img src="data.svg" alt="">
+        <h2>Data Science</h2>
+        <button onclick="joinRoom(this)" id="Data Science">Join Room</button>
+      </div>
+      <div id="modal" class="username-modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form id="go">
+          <input class="text" placeholder="Please enter a username" name="username" required/>
+          <button  type="submit">Go</button>
+        </form>
+        </div>
+      </div>
+    </div>
+ 
+  </body>
+</html>
