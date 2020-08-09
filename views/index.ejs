@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="http://localhost:3000/socket.io/socket.io.js" defer></script>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="index.css" />
+    
+    
     <title>Geek Talk</title>
   </head>
   <body>
@@ -56,8 +59,8 @@
       <div id="modal" class="username-modal">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form id="go">
-          <input class="text" placeholder="Please enter a username" name="username" required/>
+          <form id="usernameForm">
+          <input class="text" placeholder="Please enter a username" id="username" name="username" required/>
           <button  type="submit">Go</button>
         </form>
         </div>

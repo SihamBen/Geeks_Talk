@@ -1,4 +1,9 @@
+.container{
+  display: flex;
+  flex-direction: row;
+}
 #video-grid {
+  flex-grow: 2;
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
   grid-template-rows: 400px;
@@ -21,4 +26,40 @@ video {
 }
 button > i {
   font-size: 20px;
+}
+.chat-section
+{ flex-grow: 2;
+  background-color: thistle;
+
+}
+#message-container {
+  
+  
+ 
+ 
+}
+
+
+#message-container div {
+  background-color: #ccc;
+  padding: 5px;
+}
+
+#message-container div:nth-child(2n) {
+  background-color: #fff;
+}
+
+#send-container {
+  position: fixed;
+  padding-bottom: 30px;
+  bottom: 0;
+  background-color: white;
+  max-width: 1200px;
+  
+  display: flex;
+}
+
+#message-input {
+  
+  
 }

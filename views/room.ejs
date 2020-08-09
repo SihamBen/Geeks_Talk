@@ -14,15 +14,22 @@
       const ROOM_ID = "<%= roomId %>";
     </script>
     <script src="/socket.io/socket.io.js" defer></script>
-    <script
-      src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"
-      defer
-    ></script>
+    <script src='https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js' defer></script>
+
     <script src="room.js" defer></script>
     <title>Document</title>
   </head>
   <body>
-    <div id="video-grid"></div>
+    <div class="container">
+      <div id="video-grid"></div>
+      <div class="chat-section">
+        <div id="message-container"></div>
+        <form id="send-container">
+          <input type="text" id="message-input" />
+          <button type="submit" id="send-button">Send</button>
+        </form>
+      </div>
+    </div>
     <div class="menu">
       <button id="audioButton">
         <i id="audioIcon" class="fas fa-microphone"></i>

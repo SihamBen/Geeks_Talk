@@ -1,8 +1,12 @@
-const socket = io("/");
+const socket = io('/');
 const videoGrid = document.getElementById("video-grid");
 const audioButton = document.getElementById("audioButton");
 const videoButton = document.getElementById("videoButton");
 const leave = document.getElementById("leave");
+const messageContainer = document.getElementById('message-container')
+const messageForm = document.getElementById('send-container')
+const messageInput = document.getElementById('message-input')
+
 
 const myPeer = new Peer({
   host: "/",
@@ -71,3 +75,31 @@ videoButton.onclick = function () {
 leave.onclick = function () {
   window.location.replace(`/`);
 };
+
+
+
+socket.on('chat-message', data => {
+  appendMessage(`${data.name}: ${data.message}`)
+})
+
+socket.on('user-connected', name => {
+  appendMessage(`${name} connected`)
+})
+
+socket.on('user-disconnected', name => {
+  appendMessage(`${name} disconnected`)
+})
+
+messageForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const message = messageInput.value;
+  appendMessage(`You: ${message}`)
+  socket.emit('send-chat-message', message)
+  messageInput.value = ''
+})
+
+function appendMessage(message) {
+  const messageElement = document.createElement('div')
+  messageElement.innerText = message
+  messageContainer.append(messageElement)
+}
