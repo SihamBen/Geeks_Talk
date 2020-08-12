@@ -1,32 +1,30 @@
 const socket = io("/");
-
 const modal = document.getElementById("modal");
-const usernameForm = document.getElementById("usernameForm");
-const username = document.getElementById("username");
-var roomId = "";
 const span = document.getElementsByClassName("close")[0];
+const usernameForm = document.getElementById("usernameForm");
+const usernameInput = document.getElementById("username");
+var room="";
 
 //display modal when clicking join room
 function joinRoom(obj) {
   modal.style.display = "block";
-  roomId = obj.id;
+  room = obj.id;
 }
-
+// Close modal when clicking leave button
 span.onclick = function () {
   modal.style.display = "none";
 };
-
+// Close modal when clicking anywhere outside the modal
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
 
-//submitting the username
-usernameForm.onsubmit = function (event) {
-  event.preventDefault();
-  const name = "siham";
-  console.log(name);
-  socket.emit('new-user', name);
-  window.location.replace(`/${roomId}`);
+usernameForm.onsubmit = function () {
+  var input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "room";
+  input.value = room;
+  usernameForm.appendChild(input);
 };

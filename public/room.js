@@ -1,12 +1,15 @@
-const socket = io('/');
+const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 const audioButton = document.getElementById("audioButton");
 const videoButton = document.getElementById("videoButton");
 const leave = document.getElementById("leave");
-const messageContainer = document.getElementById('message-container')
-const messageForm = document.getElementById('send-container')
-const messageInput = document.getElementById('message-input')
-
+const messageContainer = document.getElementById("message-container");
+const chatForm = document.getElementById("send-container");
+const messageInput = document.getElementById("message-input");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let username = urlParams.get("username");
+let room = urlParams.get("room");
 
 const myPeer = new Peer({
   host: "/",
@@ -35,10 +38,6 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     });
   });
-//close stream
-socket.on("user-disconnected", (userId) => {
-  if (peers[userId]) peers[userId].close();
-});
 
 myPeer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
@@ -76,30 +75,58 @@ leave.onclick = function () {
   window.location.replace(`/`);
 };
 
+// Join chatroom
+socket.emit('joinRoom', { username, room });
 
+// Get room and users
+// socket.on('roomUsers', ({ room, users }) => {
+//   outputRoomName(room);
+//   outputUsers(users);
+// });
 
-socket.on('chat-message', data => {
-  appendMessage(`${data.name}: ${data.message}`)
-})
+// Message from server
+socket.on('message', message => {
+  console.log(message);
+  outputMessage(message);
 
-socket.on('user-connected', name => {
-  appendMessage(`${name} connected`)
-})
+  // Scroll down
+  //chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 
-socket.on('user-disconnected', name => {
-  appendMessage(`${name} disconnected`)
-})
-
-messageForm.addEventListener('submit', e => {
+// Message submit
+chatForm.addEventListener('submit', e => {
   e.preventDefault();
-  const message = messageInput.value;
-  appendMessage(`You: ${message}`)
-  socket.emit('send-chat-message', message)
-  messageInput.value = ''
-})
 
-function appendMessage(message) {
-  const messageElement = document.createElement('div')
-  messageElement.innerText = message
-  messageContainer.append(messageElement)
+  // Get message text
+  const msg = messageInput.value;
+
+  // Emit message to server
+  socket.emit('chatMessage', msg);
+
+  // Clear input
+  messageInput.value = '';
+  messageInput.focus();
+});
+
+// Output message to DOM
+function outputMessage(message) {
+  const div = document.createElement('div');
+  div.classList.add('message');
+  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
+  <p class="text">
+    ${message.text}
+  </p>`;
+  messageContainer.appendChild(div);
 }
+
+// // Add room name to DOM
+// function outputRoomName(room) {
+//   roomName.innerText = room;
+// }
+
+// // Add users to DOM
+// function outputUsers(users) {
+//   userList.innerHTML = `
+//     ${users.map(user => `<li>${user.username}</li>`).join('')}
+//   `;
+// }
