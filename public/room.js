@@ -86,7 +86,6 @@ socket.emit('joinRoom', { username, room });
 
 // Message from server
 socket.on('message', message => {
-  console.log(message);
   outputMessage(message);
 
   // Scroll down
@@ -113,7 +112,7 @@ function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-  <p class="text">
+  <p class="-message-text">
     ${message.text}
   </p>`;
   messageContainer.appendChild(div);

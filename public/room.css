@@ -1,3 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -28,27 +41,78 @@ button > i {
   font-size: 20px;
 }
 .chat-section {
-  flex-grow: 2;
-  background-color: thistle;
+  width: 30vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
+  border-left: solid 1px #6176ee;
+  padding: 2rem;
 }
 #message-container {
 }
-
 #message-container div {
-  background-color: #ccc;
-  padding: 5px;
+  border: solid 1.5px #6176ee;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 10px;
+  max-width: 100%;
 }
-
-#message-container div:nth-child(2n) {
-  background-color: #fff;
+#message-container div:first-child {
+  background-color: #6176ee;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
-
+#message-container div:first-child >p{
+  color: white;
+}
+.message-text{
+  max-width: 100%;
+}
+.meta{
+  color: #6176ee;
+  font-weight: bold;
+}
 #send-container {
   position: fixed;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   bottom: 0;
   background-color: white;
-  max-width: 1200px;
-
   display: flex;
+  width: 100%;
+}
+#message-input,#send-button{
+  border: solid 2px #6176ee;
+  border-radius: 5px 0 0 5px;
+  height: 2rem;
+  width: 12rem;
+  outline: none;
+}
+#send-button{
+  font-stretch: expanded;
+  font-weight: bolder;
+  background: #6176ee;
+  border-radius:  0  5px 5px 0;
+  color: white;
+  width: 5rem;
+  text-align: center;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8b98e6;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6176ee;
 }
