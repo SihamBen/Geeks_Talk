@@ -115,6 +115,8 @@ chatForm.addEventListener('submit', e => {
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
+  div.classList.add('fade-in');
+
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
   <p class="-message-text">
     ${message.text}

@@ -12,6 +12,7 @@ function joinRoom(obj) {
 }
 // Close modal when clicking leave button
 span.onclick = function () {
+
   modal.style.display = "none";
 };
 // Close modal when clicking anywhere outside the modal
