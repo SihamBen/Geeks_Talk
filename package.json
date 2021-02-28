@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon server.js"
   },
+  "engines": {
+    "node": "15.9.0",
+    "npm":"7.5.3"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
