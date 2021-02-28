@@ -10,6 +10,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let username = urlParams.get("username");
 let room = urlParams.get("room");
+let users=0;
 
 const myPeer = new Peer({
   host: "/",
@@ -52,7 +53,7 @@ function connectToNewUser(userId, stream) {
   call.on("close", () => {
     video.remove();
   });
-
+users++;
   peers[userId] = call;
 }
 
@@ -61,6 +62,9 @@ function addVideoStream(video, stream) {
   video.addEventListener("loadedmetadata", () => {
     video.play();
   });
+  videoGrid.style.gridTemplateColumns=`repeat(${users}, 1fr)`;
+  videoGrid.style.gridTemplateRows="auto";
+
   videoGrid.append(video);
 }
 audioButton.onclick = function () {

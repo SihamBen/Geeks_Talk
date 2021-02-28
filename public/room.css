@@ -18,8 +18,8 @@ body {
 #video-grid {
   flex-grow: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-template-rows: 20px;
+ 
+  
 }
 video {
   width: 100%;
