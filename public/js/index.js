@@ -23,7 +23,7 @@ window.onclick = function (event) {
 };
 
 usernameForm.onsubmit = function () {
-  var input = document.createElement("input");
+  let input = document.createElement("input");
   input.type = "hidden";
   input.name = "room";
   input.value = room;
