@@ -1,4 +1,4 @@
-const socket = io("/"||process.env.PUBLIC_URL);
+const socket = io(process.env.PUBLIC_URL||"/");
 const modal = document.getElementById("modal");
 const span = document.getElementsByClassName("close")[0];
 const usernameForm = document.getElementById("usernameForm");
