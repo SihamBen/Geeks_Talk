@@ -27,7 +27,7 @@ navigator.mediaDevices
   .then((stream) => {
     addVideoStream(myVideo, stream);
 
-    myPeer.on("call", (call) => {
+  myPeer.on("call", (call) => {
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
@@ -101,7 +101,7 @@ chatForm.addEventListener('submit', e => {
   e.preventDefault();
 
   // Get message text
-  const msg = messageInput.value;
+  let msg = messageInput.value;
 
   // Emit message to server
   socket.emit('chatMessage', msg);
